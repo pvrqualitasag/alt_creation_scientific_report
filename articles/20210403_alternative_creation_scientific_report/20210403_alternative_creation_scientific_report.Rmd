@@ -1,10 +1,18 @@
 ---
-title: Alternative Procedure To Creation Scientific Reports
-date : 2021-04-03
-author: Peter von rohr
-output: html_document
+title: "Alternative Procedure To Creation Scientific Reports"
+author: "Peter von rohr"
+date: '2021-04-03'
+output:
+  html_document: default
+  pdf_document: default
+bibliography: "bibliography.bib"  
 ---
 
+```{r setup, include=FALSE}
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+met <- rmdhelp::get_met()
+```
 
 # Disclaimer
 Thoughts and arguments why alternative procedures to create scientific reports are important.
@@ -17,8 +25,31 @@ If we are going to write every report from the beginning to the end only once th
 
 Furthermore, some of the widely used text-processing systems do not provide good support to creating reproducible versions of reports. 
 
+The copy-paste procedure is shown in the following diagram.
+
+```{r copypasteproc, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/copypasteproc.odg')
+knitr::include_graphics(path = "odg/copypasteproc.png")
+```
+
 
 # Alternative
-The lack of good support of reprocibility and the unflexibility of the copy-paste procedure make it necessary to think about alternative creation procedures for scientific reports. One such alternative is described in this section.
+The lack of good support of reproducibility and the unflexibility of the copy-paste procedure make it necessary to think about alternative creation procedures for scientific reports. One such alternative is described in this section.
+
+The first idea on how to improve reproducibility and how to increase the efficiency of integrating modifications into reports is based on the concept of literate programming developed by `r met$add('knuth1984')`. The concept of literate programming originates in the fact that programming languages and computer programs should be made to explain the instructions given to the computer to other human beings and not to computers. In literate programming this idea of explaining computer programs to human being is developed one step further. This means that human readable text is intermingled with programming code in a unified source file. This source file can be compiled and transcribed into a nicely readable or printable output format. The concept of having text and code in a single source file is shown in the following diagram.
+
+```{r unified-source-file, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/unified-source-file.odg')
+knitr::include_graphics(path = "odg/unified-source-file.png")
+```
+
+The unified source file consists of the two components `Text` and `Code` where the text explains what the programming code is doing. After compiling the unified source file, to an ouput document, the additional component `Output` is added to the document. The component `Output` always follows a `Code`-component. In principle an `Ouput`-component can also be empty. 
 
 
+# Example
+The copy-paste procedure and a literate programming bases approach are compared when writing an scientific report. 
+
+
+
+# References
+ 
